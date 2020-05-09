@@ -180,6 +180,10 @@ require([
         "fail" : function(data) { dispatcher.trigger("fail", data) },
     });
 
+    //debugging
+    setInterval(socket.outputPerformanceTracking, 5000);
+
+
     // clean up application
     $(window).on("unload", function(){
         socket.close();
