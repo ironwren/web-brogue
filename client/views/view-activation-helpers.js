@@ -13,17 +13,18 @@ define([
         },
 
         currentGames : function(){
+            router.navigate("currentGames");
             $('#all-scores, #server-statistics').addClass('inactive');
             $('#current-games, #mini-scores, #chat, #site-news').removeClass('inactive');
         },
 
         statistics : function(){
+            router.navigate("gameStatistics");
             $('#current-games, #mini-scores, #all-scores, #site-news').addClass('inactive');
             $('#server-statistics').removeClass('inactive');
         },
 
         highScores : function() {
-
             router.navigate("highScores");
             $('#current-games, #mini-scores, #server-statistics, #site-news').addClass('inactive');
             $('#all-scores, #chat').removeClass('inactive');

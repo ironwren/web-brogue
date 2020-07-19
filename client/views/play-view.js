@@ -76,11 +76,11 @@ define([
         },
         showCurrentGames : function(event){
             event.preventDefault();
-            activate.currentGames();
+            dispatcher.trigger("currentGames");
         },
         showStats : function(event){
             event.preventDefault();
-            activate.statistics();
+            dispatcher.trigger("gameStatistics");
         },
         showHighScores: function(event) {
             event.preventDefault();

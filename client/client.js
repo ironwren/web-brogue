@@ -184,6 +184,10 @@ require([
     dispatcher.on("all-scores", activate.highScores, activate);
     dispatcher.on("all-scores", allScoresView.activate, allScoresView);
 
+    dispatcher.on("currentGames", activate.currentGames, activate);
+
+    dispatcher.on("gameStatistics", activate.statistics, activate)
+
     dispatcher.on("chat", chatView.chatMessage, chatView);
     dispatcher.on("chat", consoleChatView.chatMessage, consoleChatView);
     dispatcher.on("chat", consoleCanvasChatView.chatMessage, consoleCanvasChatView);
