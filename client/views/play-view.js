@@ -22,6 +22,8 @@ define([
             "click #show-high-scores" : "showHighScores"
         },
 
+        loggedIn: false,
+
         initialize: function() {
             this.render();
         },
@@ -31,7 +33,8 @@ define([
             var variantData = _.values(variantLookup.variants);
 
             this.$el.html(this.headingTemplate(
-                { variants: variantData }));
+                { loggedIn: this.loggedIn,
+                  variants: variantData }));
 
             return this;
         },
@@ -81,11 +84,18 @@ define([
         },
         showHighScores: function(event) {
             event.preventDefault();
-            activate.highScores();
             dispatcher.trigger("all-scores");
         },
         goToConsole : function(){
             dispatcher.trigger("showConsole");
+        },
+        login: function() {
+            this.loggedIn = true;
+            this.render();
+        },
+        logout: function() {
+            this.loggedIn = false;
+            this.render();
         }
         
     });

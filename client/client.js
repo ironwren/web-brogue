@@ -50,6 +50,7 @@ require([
     "models/general-stats-model",
     "models/level-probability-model",
     "models/dpad-button",
+    "models/auth",
     "services/recordings",
     "views/view-activation-helpers",
     "views/auth-view",
@@ -73,13 +74,13 @@ require([
     "views/dpad-button-view",
     "views/dpad-visibility-button-view"
 ], function( $, _, Backbone, BackbonePaginator, Backgrid, BackgridPaginator, dispatcher, debugMode, socket, router, pageRouter,
-     HighScoresModel, ChatModel, SiteNewsModel, CauseStatsModel, LevelStatsModel, GeneralStatsModel, LevelProbabilityModel, DPadButtonModel, recordings,
+     HighScoresModel, ChatModel, SiteNewsModel, CauseStatsModel, LevelStatsModel, GeneralStatsModel, LevelProbabilityModel, DPadButtonModel, AuthenticationModel, recordings,
      activate, AuthView, ChatView, ConsoleChatView, CanvasConsoleChatView, PlayView, HeaderView, CurrentGamesView, HighScoresView, AllScoresView, SiteNewsView,
      ConsoleView, CanvasConsoleView, SeedPopupView, StatisticsView, LevelStatsView, GeneralStatsView, CauseStatsView, LevelProbabilityView,
      DPadButtonView, DPadButtonVisibilityView){
     
-    // initialize each view
-    var authView = new AuthView();
+    // initialize each model and view;
+    var authView = new AuthView({model: new AuthenticationModel()});
     var playView = new PlayView();
     var headerView = new HeaderView();
     var currentGamesView = new CurrentGamesView();
@@ -161,7 +162,7 @@ require([
     dispatcher.on("login", chatView.login, chatView);
     dispatcher.on("login", consoleChatView.login, consoleChatView);
     dispatcher.on("login", consoleCanvasChatView.login, consoleCanvasChatView);
-
+    dispatcher.on("login", playView.login, playView);
     dispatcher.on("login", currentGamesView.login, currentGamesView);
 
     dispatcher.on("anon-login", headerView.anonymousLogin, headerView);
@@ -174,10 +175,11 @@ require([
     dispatcher.on("logout", allScoresView.logout, allScoresView);
     dispatcher.on("logout", consoleChatView.logout, consoleChatView);
     dispatcher.on("logout", consoleCanvasChatView.logout, consoleCanvasChatView);
-
     dispatcher.on("logout", chatView.logout, chatView);
     dispatcher.on("logout", currentGamesView.logout, currentGamesView);
     dispatcher.on("logout", authView.logout, authView);
+    dispatcher.on("logout", playView.logout, playView);
+
 
     dispatcher.on("all-scores", activate.highScores, activate);
     dispatcher.on("all-scores", allScoresView.activate, allScoresView);

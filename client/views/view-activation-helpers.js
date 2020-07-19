@@ -57,11 +57,10 @@ define([
         
         loggedIn: function(){
             $('#auth').addClass("inactive");
-            $('#play').removeClass("inactive");
         },
         
         resetAll: function(){
-            $('#play, #all-scores, #console-holder, #canvas-console-holder, #server-statistics').addClass("inactive");
+            $('#all-scores, #console-holder, #canvas-console-holder, #server-statistics').addClass("inactive");
             $('#lobby, #auth, #current-games, #mini-scores').removeClass("inactive");
         }
     };
