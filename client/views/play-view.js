@@ -85,7 +85,6 @@ define([
             dispatcher.trigger("all-scores");
         },
         goToConsole : function(){
-            activate.console();
             dispatcher.trigger("showConsole");
         }
         

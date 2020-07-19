@@ -8,7 +8,7 @@ define([
     "backgrid",
     "moment",
     "views/view-activation-helpers"
-], function ($, _, Backbone, config, dispatcher, send, Backgrid, Moment, activate) {
+], function ($, _, Backbone, config, dispatcher, send, Backgrid, Moment) {
 
     var LevelFormatter = _.extend({}, Backgrid.CellFormatter.prototype, {
         fromRaw: function (rawValue, model) {
@@ -50,9 +50,8 @@ define([
             var gameDescription = $(event.target).data("gamedescription");
             var gameVariant = $(event.target).data("variant");
 
-            send("brogue", "recording", {recording: gameId, variant: gameVariant});
-            dispatcher.trigger("recordingGame", {recording: gameDescription, variant: gameVariant});
-            this.goToConsole();
+            dispatcher.trigger("recordingGame", {id: gameId, recording: gameDescription, variant: gameVariant});
+            dispatcher.trigger("showConsole");
         },
 
         render: function () {
@@ -86,11 +85,8 @@ define([
             }
             this.delegateEvents();
             return this;
-        },
-        goToConsole : function(){
-            activate.console();
-            dispatcher.trigger("showConsole");
         }
+
     });
 
     var tableCells = {
