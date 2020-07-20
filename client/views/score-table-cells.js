@@ -71,7 +71,7 @@ define([
                     "data-gameid": formattedNameValue,
                     "data-variant": this.model.get("variant"),
                     "data-gamedescription": this.model.get("username") + "-" + this.model.get("seed") + "-" + formatDate(this.model.get("date"))
-                }).text("Watch game"));
+                }).text("Watch"));
             }
 
             var downloadValue = this.model.get("download");
@@ -81,11 +81,22 @@ define([
                     href: 'api/' + downloadValue,
                     title: this.model.title,
                     id: 'download-game',
-                }).text("Download game"));
+                }).text("Download"));
             }
+
+            var downloadValue = this.model.get("link");
+            if(downloadValue) {
+                this.$el.append(" ");
+                this.$el.append($("<a>", {
+                    href: '#' + downloadValue,
+                    title: this.model.title,
+                    id: 'link-game',
+                }).text("Link"));
+            }
+
             this.delegateEvents();
             return this;
-        }
+        },
 
     });
 

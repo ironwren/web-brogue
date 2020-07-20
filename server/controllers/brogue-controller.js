@@ -164,13 +164,15 @@ _.extend(BrogueController.prototype, {
     watchRecording: function (data) {
         if (!data || !data.recording) {
             this.sendFailedToStartGameMessage("No game record given to watch.");
+            console.error("No game record given to watch.");
             return;
         }
 
         //Lookup recording id in database
         var splitRecordingId = data.recording.split('-');
         if (splitRecordingId.length < 2) {
-            this.sendFailedToStartGameMessage("Can't process recording id " + data.recording);
+            this.sendFailedToStartGameMessage("Recording id in incorrect format " + data.recording);
+            console.error("Recording id in incorrect format " + data.recording);
             return;
         }
 
@@ -181,6 +183,7 @@ _.extend(BrogueController.prototype, {
         gameRecord.findOne({'_id': id}, function (err, gameRecord) {
             if (err) {
                 self.controllers.error.send(JSON.stringify(err));
+                console.error("Error on retrieving game record " + JSON.stringify(err));
                 return;
             }
             if (gameRecord) {
@@ -212,6 +215,7 @@ _.extend(BrogueController.prototype, {
             }
             else {
                 self.sendFailedToStartGameMessage("Can't process recording id " + data.recording);
+                console.error("Can't process recording id " + data.recording);
                 return;
             }
         });

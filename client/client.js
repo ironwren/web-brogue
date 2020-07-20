@@ -164,12 +164,13 @@ require([
     dispatcher.on("login", consoleCanvasChatView.login, consoleCanvasChatView);
     dispatcher.on("login", playView.login, playView);
     dispatcher.on("login", currentGamesView.login, currentGamesView);
+    dispatcher.on("login", pageRouter.login, router);
 
     dispatcher.on("anon-login", headerView.anonymousLogin, headerView);
     dispatcher.on("anon-login", chatView.login, chatView);
     dispatcher.on("anon-login", consoleChatView.login, consoleChatView);
     dispatcher.on("anon-login", consoleCanvasChatView.login, consoleCanvasChatView);
-
+    dispatcher.on("anon-login", pageRouter.login, router);
 
     dispatcher.on("logout", highScoresView.logout, highScoresView);
     dispatcher.on("logout", allScoresView.logout, allScoresView);
@@ -276,7 +277,4 @@ require([
     } 
 
     activate.endLoading();
-
-    // URL routing
-    Backbone.history.start();
 });

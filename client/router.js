@@ -8,12 +8,13 @@ define([
     var BrogueRouter = Backbone.Router.extend({
 
         routes: {
-        "highScores":        "highScores",
-        "currentGames":      "currentGames",
-        "gameStatistics":    "gameStatistics"
-//        "search/:query":        "search",  // #search/kiwis
-  //      "search/:query/p:page": "search"   // #search/kiwis/p7
+            "highScores":        "highScores",
+            "currentGames":      "currentGames",
+            "gameStatistics":    "gameStatistics",
+            "viewRecording/:variant-:id": "viewRecording"
         },
+
+        started: false,
 
         highScores: function() {
             dispatcher.trigger("all-scores");
@@ -24,6 +25,20 @@ define([
         gameStatistics: function() {
             dispatcher.trigger("gameStatistics");
         },
+        viewRecording: function(variant, id) {
+
+            var recordingId = 'recording-' + id;
+            dispatcher.trigger("recordingGame", {variant: variant, id: recordingId});
+            dispatcher.trigger("showConsole");
+        },
+        //Only activate the router on login, to avoid races when viewing recordings etc.
+        login: function() {
+
+            if(!this.started) { 
+                Backbone.history.start();
+                this.started = true;
+            }
+        }
     });
     
     return new BrogueRouter();
