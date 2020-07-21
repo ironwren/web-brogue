@@ -102,7 +102,7 @@ define([
                     href: '#' + downloadValue,
                     title: this.model.title,
                     id: 'link-game',
-                }).text("Link"));
+                }).text("Copy Link"));
             }
 
             this.delegateEvents();
