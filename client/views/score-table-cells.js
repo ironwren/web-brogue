@@ -40,7 +40,8 @@ define([
     var WatchGameUriCell = Backgrid.UriCell.extend({
 
         events : {
-            "click #watch-game" : "watchGame"
+            "click #watch-game" : "watchGame",
+            "click #link-game": "copyLink"
         },
 
         watchGame: function(event) {
@@ -52,6 +53,16 @@ define([
 
             dispatcher.trigger("recordingGame", {id: gameId, recording: gameDescription, variant: gameVariant});
             dispatcher.trigger("showConsole");
+        },
+
+        copyLink: function(event) {
+            event.preventDefault();
+            var gameLink = window.location.host + "/" + $(event.target).attr("href");
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val(gameLink).select();
+            document.execCommand("copy");
+            $temp.remove();
         },
 
         render: function () {
