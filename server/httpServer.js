@@ -11,6 +11,7 @@ module.exports = function(config) {
     var newsApi = require("./api/news-api");
     var statsApi = require("./api/stats-api");
     var usersApi = require("./api/users-api");
+    var graphQLApi = require("./api/graphql-api")
 
     var mongoose = require("mongoose");
     mongoose.connect(config.db.url);
@@ -44,6 +45,8 @@ module.exports = function(config) {
     newsApi(app);
     statsApi(app, config);
     usersApi(app, config);
+
+    graphQLApi(app, config);
 
     var server = require('http').Server(app);
     var io = require('socket.io')(server);
