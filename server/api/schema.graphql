@@ -1,0 +1,9 @@
+ type Query {
+    games(username: String!): [Game!]
+}
+
+type Game {
+    id: ID!
+    username: String
+    score: Int!
+}
