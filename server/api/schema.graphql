@@ -4,6 +4,13 @@
 
 type Game {
     id: ID!
-    username: String
-    score: Int!
+    username: String!
+    score: Int!,
+    seed: Int!,
+    level: Int!,
+    result: String!,
+    easyMode: Boolean!,
+    description: String!,
+    date: String!,
+    variant: String!
 }

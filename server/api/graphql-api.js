@@ -66,7 +66,14 @@ module.exports = function(app, config) {
         Game: {
           id: game => game.id,
           username: game => game.username,
-          score: game => game.score
+          score: game => game.score,
+          seed: game => game.seed,
+          level: game => game.level,
+          result: game => game.result,
+          easyMode: game => game.easyMode,
+          description: game => game.description,
+          date: game => game.date,
+          variant: game => game.variant
         },
     };
 
