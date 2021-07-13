@@ -4,7 +4,7 @@ var path = require('path');
 
 var config = {
     port : {
-        HTTP : 8080
+        HTTP : 80
     },
     brogueVariants : {
         "BROGUE": {
