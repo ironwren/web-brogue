@@ -13,7 +13,7 @@ module.exports = function(config) {
     var usersApi = require("./api/users-api");
 
     var mongoose = require("mongoose");
-    mongoose.connect(config.db.url);
+    mongoose.connect(config.db.url, { useMongoClient: true });
 
     var app = express();
 
@@ -48,11 +48,13 @@ module.exports = function(config) {
     var server = require('http').Server(app);
     var io = require('socket.io')(server);
 
+    console.log('starting server on', config.port.HTTP )
+
     server.listen(config.port.HTTP);
 
     io.on('connection', function (socket) {
 
-        //console.log("New connection");
+        console.log("New connection");
 
         var controllerFactory = require("./controllers/controller-factory");
         var controllerCleanUp = require("./controllers/cleanup-controllers.js");

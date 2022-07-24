@@ -18,93 +18,102 @@ Table Of Contents
 /* 0.1 Base Styles ------------------*/
 
 @font-face {
-    font-family: BrogueCE;
-    src:
-        url('./assets/BrogueCE.woff2') format('woff2'),
-        url('./assets/BrogueCE.woff') format('woff'),
-        url('./assets/BrogueCE.ttf') format('truetype');
+  font-family: BrogueCE;
+  src:
+      url('./assets/BrogueCE.woff2') format('woff2'),
+      url('./assets/BrogueCE.woff') format('woff'),
+      url('./assets/BrogueCE.ttf') format('truetype');
+}
+
+html, body {
+height: 100%;
+}
+body {
+min-height: 100%;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    font-family: Rubik, "Source Sans Pro", Arial, Helvetica, sans-serif;
-    font-size: 110%;
-    line-height: 1.3;
-    color: #bbbbbb;
-    background-color: #101010;
-    width: 100vw;
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  font-family: Rubik, "Source Sans Pro", Arial, Helvetica, sans-serif;
+  font-size: 110%;
+  line-height: 1.3;
+  color: #bbbbbb;
+  background-color: #101010;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 h1, h2, h3 {
-    font-family: Fondamento, "Source Sans Pro", Arial, Helvetica, sans-serif;
-    color: #db1d1d;
-    margin: 0.5em 0 0.3em 0;
+  /* font-family: Fondamento, "Source Sans Pro", Arial, Helvetica, sans-serif; */
+  color: white;
+  margin: 0.5em 0;
+  font-size: 2em;
 }
 
 ul, ol {
-    margin: 0.2em 0;
+  margin: 0.2em 0;
 }
 
 li {
-    margin: 0.2em 0;
+  margin: 0.2em 0;
 }
 
 a, a:visited {
-    color: inherit;
-    text-decoration: underline #80addb;
+  color: inherit;
+  text-decoration: underline #80addb;
 }
 
 a:hover, a:active {
-    color: #61b0ff;
+  color: #61b0ff;
 }
 
 * {
-    scrollbar-color: #263e52 #0f1418;
-    word-wrap: break-word;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
+  scrollbar-color: #263e52 white;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
-    width: 16px;
+  width: 16px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0f1418;
+  background: white;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #263e52;
-    border-radius: 8px;
-    border: 2px solid #0f1418;
+  background-color: #263e52;
+  border-radius: 8px;
+  border: 2px solid white;
 }
 
 ::-webkit-scrollbar-corner {
-    background-color: #0f1418;
+  background-color: white;
 }
 
 *::-moz-selection {
-    color: white;
-    background: #3c58a5;
+  color: white;
+  background: #3c58a5;
 }
 
 *::selection {
-    color: white;
-    background: #3c58a5;
+  color: white;
+  background: #3c58a5;
 }
 
 /* 0.2 Control Styles ---------------*/
 
 .inactive {
-    display : none;
+  display : none;
 }
 
 /* 0.3 Form Styles -------------------*/
 
 label {
+<<<<<<< HEAD
     display: inline;
     font-weight: bold;
     font-size: 75%;
@@ -117,16 +126,33 @@ input {
     background-color: #406080;
     border: 1px solid #80addb;
     font-family: inherit;
+=======
+  display: block;
+  font-weight: bold;
+  font-size: 75%;
+}
+
+input {
+  display: block;
+  margin-bottom: 0.7em;
+  color: white;
+  background-color: #406080;
+  border: 1px solid #80addb;
+  font-family: inherit;
+  padding: 10px;
+  font-size: 16px;
+>>>>>>> 18ff46f (add docker-compose support)
 }
 
 input::placeholder {
-    color: #80addb;
+  color: #80addb;
 }
 
 input[type="radio"] {
-    display: inline;
+  display: inline;
 }
 
+<<<<<<< HEAD
 input[type="checkbox"] {
     vertical-align: middle;
     position: relative;
@@ -139,75 +165,117 @@ button {
     background-color: #406080;
     border: 1px solid #80addb;
     font-family: inherit;
+=======
+button, .button {
+  display: block;
+  color: white;
+  background-color: #406080;
+  border: 1px solid #80addb;
+  font-family: inherit;
+  padding: 5px 20px;
+>>>>>>> 18ff46f (add docker-compose support)
 }
 
-button:hover {
-    border-color: white;
-    background-color: #6090c0;
+.button {
+text-decoration: none;
+}
+
+.login-buttons {
+display: flex;
+justify-content: space-between;
+}
+
+.play-buttons {
+display: flex;
+margin: 20px 0;
+flex-direction: column;
+}
+
+.play-buttons .button {
+width: 100%;
+}
+
+.play-buttons .button:first-child {
+margin-bottom: 10px;
+}
+
+.game-menu > a {
+display:block;
+}
+
+button:hover, .button:hover {
+  border-color: white;
+  background-color: #6090c0;
 }
 
 
 th, td {
-    padding: 0.1em 0.5em;
-    text-align: left;
+  padding: 0.1em 0.5em;
+  text-align: left;
 }
 
 /*=====================================
- * 1.0 Lobby
- *===================================*/
+* 1.0 Lobby
+*===================================*/
 
 .header {
-    margin: 0;
-    text-align: center;
-    color: #999999;
-    background-color: #102030;
+  padding: 10px 0;
+  text-align: center;
+  color: #999999;
+  background-color: #102030;
+  min-height: 42px;
+}
+
+#lobby, .lobby-main, .lobby-left {
+height: calc(100% - 42px);
 }
 
 .lobby-top {
-    display: flex;
-    flex-direction: row;
-    background-color: #202020;
-    background-image: url(./assets/corridor.jpg);
-    background-position: 50% 10%;
-    background-repeat: no-repeat;
-    background-size: 100vw 30vw;
-    background-attachment: local;
+  display: flex;
+  flex-direction: row;
+  background-color: #202020;
+  background-image: url(./assets/corridor.jpg);
+  background-position: 50% 10%;
+  background-repeat: no-repeat;
+  background-size: 100vw 30vw;
+  background-attachment: local;
 }
 
 .banner-container {
-    flex: auto;
-    max-width: 70vw;
-    margin: auto;
-    padding: 1em;
+  flex: auto;
+  max-width: 70vw;
+  margin: auto;
+  padding: 1em;
 }
 
 .banner {
-    display: block;
-    width: 100%;
-    max-width: 561px;
-    margin: auto;
+  display: block;
+  width: 100%;
+  max-width: 561px;
+  margin: auto;
 }
 
 .lobby-main {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .lobby-left {
-    flex: none;
-    background-color: #102030;
-    width: 20vw;
-    min-width: 20em;
+  flex: none;
+  background-color: #102030;
+  padding: 0 20px;
+  /* width: 20vw; */
+  /* min-width: 20em; */
 }
 
 .lobby-right {
-    flex: auto;
-    min-width: 30em;
+  flex: auto;
+  min-width: 30em;
 }
 
 .loading {
-    margin: 3em;
-    text-align: center;
+  margin: 3em;
+  text-align: center;
 }
 
 .auth,
@@ -221,170 +289,180 @@ th, td {
 .users-page,
 .server-statistics,
 .user-statistics {
-    margin: 0 1em;
+  margin: 0 1em;
+}
+
+.auth {
+margin: 20px 0;
+}
+
+#auth-message {
+margin: 10px;
+color: white;
 }
 
 .about p, .about ul {
-    font-size: 80%;
+  font-size: 80%;
 }
 
 .auth input {
-    width: 100%;
+  width: 100%;
 }
 
-.auth button {
-    float: right;
-}
+/* .auth button {
+  float: right;
+} */
 
 .lobby-chat {
-    max-width: 25em;
+  max-width: 25em;
 }
 
 .lobby-chat input {
-    width: 100%;
+  width: 100%;
 }
 
 .lobby-chat button {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .lobby-chat-messages,
 .console-chat-messages {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    overflow: auto;
-    font-size: 75%;
-    border: 1px solid #35485a;
-    background-color: #00000060;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  font-size: 75%;
+  border: 1px solid #35485a;
+  background-color: #00000060;
 }
 
 .lobby-chat-messages {
-    height: 15em;
-    max-height: 15em;
+  height: 15em;
+  max-height: 15em;
 }
 
 .server-statistics table {
-    width: auto;
+  width: auto;
 }
 
 .ac-result {
-    font-size: 80%;
+  font-size: 80%;
 }
 
 .highlight {
-    color: #ff0000;
+  color: #ff0000;
 }
 
 .with-tooltip {
-    display: inline;
+  display: inline;
 }
 
 .with-tooltip:before {
-    visibility: hidden;
-    content: attr(tooltip);
-    position: absolute;
-    color: #aaaaaa;
-    background-color: #222222;
-    border: 1px solid #555555;
-    padding: 0 0.3em;
-    border-radius: 0.3em;
-    transform: translateX(-100%) translate(1.8em, -1.8em);
+  visibility: hidden;
+  content: attr(tooltip);
+  position: absolute;
+  color: #aaaaaa;
+  background-color: #222222;
+  border: 1px solid #555555;
+  padding: 0 0.3em;
+  border-radius: 0.3em;
+  transform: translateX(-100%) translate(1.8em, -1.8em);
 }
 
 .with-tooltip:hover:before {
-    visibility: visible;
+  visibility: visible;
 }
 
 #current-games-table,
 #all-scores-grid,
 #mini-scores-grid,
 #user-stats-scores-grid {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 @media screen and (max-width:50em) {
-    .lobby-main {
-        flex-direction: column;
-    }
-    .lobby-right,
-    .lobby-left {
-        background-color: inherit;
-        width: 100%;
-        min-width: 100%;
-    }
+  .lobby-main {
+      flex-direction: column;
+  }
+  .lobby-right,
+  .lobby-left {
+      background-color: inherit;
+      width: 100%;
+      min-width: 100%;
+  }
 }
 
 
 /*=====================================
- * 2.0 Console
- *===================================*/
+* 2.0 Console
+*===================================*/
 
 .console-wrapper {
-    position : relative;
-    overflow : hidden;
-    user-select: none;
-    outline: none;
-    height: 95vh;
+  position : relative;
+  overflow : hidden;
+  user-select: none;
+  outline: none;
+  height: 95vh;
 }
 
 .console {
-    outline: none;
-    position : relative;
-    overflow : hidden;
-    user-select: none;
-    outline: none;
+  outline: none;
+  position : relative;
+  overflow : hidden;
+  user-select: none;
+  outline: none;
 }
 
 .console-holder {
-    height: calc(100vh - 1.3em);
-    margin: 0;
-    background-image: url(./assets/marble.jpg);
-    background-repeat: repeat;
+  height: calc(100% - 42px);
+  margin: 0;
+  /* background-image: url(./assets/marble.jpg); */
+  /* background-repeat: repeat; */
+  background-color: black;
 }
 
 .console.full-height {
-    height : 100%;
+  height : 100%;
 }
 
 .console-button {
-    z-index: 5000;
-    opacity: 50%;
-    color: white;
-    position: fixed;
-    bottom: "auto";
-    left: 0;
-    top: 0;
-    width: 4rem;
-    height: 4rem;
-    font-size: 2rem;
-    line-height: 1;
-    padding: 1rem;
-    border-radius: 0 0 0 0;
-    /* The scaling must happen about the TL corner otherwise the subsequent translation is offset by (1 - 1 / scale) * centre-origin / 2 */
-    transform-origin: 0% 0%;
-    text-align: center;
+  z-index: 5000;
+  opacity: 50%;
+  color: white;
+  position: fixed;
+  bottom: "auto";
+  left: 0;
+  top: 0;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 1rem;
+  border-radius: 0 0 0 0;
+  /* The scaling must happen about the TL corner otherwise the subsequent translation is offset by (1 - 1 / scale) * centre-origin / 2 */
+  transform-origin: 0% 0%;
+  text-align: center;
 }
 
 .console-button-dpad {
-    z-index: 5000;
-    opacity: 50%;
-    color: white;
-    position: fixed;
-    bottom: "auto";
-    left: 0;
-    top: 0;
-    width: auto;
-    height: 3rem;
-    font-size: 1rem;
-    line-height: 1;
-    padding: 1rem;
-    border-radius: 0 0 0 0;
-    /* The scaling must happen about the TL corner otherwise the subsequent translation is offset by (1 - 1 / scale) * centre-origin / 2 */
-    transform-origin: 0% 0%;
-    text-align: center;
+  z-index: 5000;
+  opacity: 50%;
+  color: white;
+  position: fixed;
+  bottom: "auto";
+  left: 0;
+  top: 0;
+  width: auto;
+  height: 3rem;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 1rem;
+  border-radius: 0 0 0 0;
+  /* The scaling must happen about the TL corner otherwise the subsequent translation is offset by (1 - 1 / scale) * centre-origin / 2 */
+  transform-origin: 0% 0%;
+  text-align: center;
 }
 /*
 .console-button#console-up { bottom: 11rem; left: 1rem; }
@@ -401,95 +479,95 @@ th, td {
 .console-button#console-down-right-right { bottom: 3rem; left: 3rem; }
 */
 .console-cell {
-    font-family: BrogueCE, "Source Code Pro", Monaco, Consolas, Noto Sans, monospace;
-    position : absolute;
-    overflow: visible;
-    text-align: center;
-    cursor: default;
-    line-height: 1;
+  font-family: BrogueCE, "Source Code Pro", Monaco, Consolas, Noto Sans, monospace;
+  position : absolute;
+  overflow: visible;
+  text-align: center;
+  cursor: default;
+  line-height: 1;
 }
 
 .console-chat {
-    visibility: hidden;
-    display: none;
-    word-wrap: break-word;
-    height: 100%;
+  visibility: hidden;
+  display: none;
+  word-wrap: break-word;
+  height: 100%;
 }
 
 .console-chat-inner {
-    height: 100%;
-    padding: 1em 0.5em 0.5em 0.5em;
-    width: 25vw;
-    max-width: 25em;
+  height: 100%;
+  padding: 1em 0.5em 0.5em 0.5em;
+  width: 25vw;
+  max-width: 25em;
 }
 
 .console-chat form {
-    width: 100%;
-    margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .console-chat input {
-    width: 100%;
+  width: 100%;
 }
 
 .console-chat button {
-    float: right;
-    clear: left;
+  float: right;
+  clear: left;
 }
 
 .console-chat-buttons {
-    position: absolute;
-    z-index: 5000;
-    right: 1em;
-    top: 2em;
+  position: absolute;
+  z-index: 5000;
+  right: 1em;
+  top: 2em;
 }
 
 .console-chat-messages {
-    height: calc(100% - 10em);
-    width: 100%;
-    margin-top: 3em;
+  height: calc(100% - 10em);
+  width: 100%;
+  margin-top: 3em;
 }
 
 @media screen and (min-width: 700px) {
 
-    .console-chat {
-        float: right;
-        visibility: inherit;
-        display: inherit;
-    }
+  .console-chat {
+      float: right;
+      visibility: inherit;
+      display: inherit;
+  }
 }
 
 /*=====================================
- * 3.0 Popup
- *===================================*/
+* 3.0 Popup
+*===================================*/
 
 .popup {
-    position: fixed;
-    z-index: 2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 2em;
-    border: 1px solid white;
-    background-color: #102030;
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  border: 1px solid white;
+  background-color: #102030;
 }
 
 .popup .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(30%, -30%);
-    border: 1px solid white;
-    background-color: black;
-    color: white;
-    width: 1em;
-    height: 1em;
-    line-height: 1;
-    font-size: 1.5em;
-    text-align: center;
-    vertical-align: middle;
-    font-weight: bold;
-    cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(30%, -30%);
+  border: 1px solid white;
+  background-color: #0f1418;
+  color: white;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  font-size: 1.5em;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .seed-popup {
@@ -497,14 +575,14 @@ th, td {
 }
 
 .popup-overlay {
-    position: fixed;
-    z-index: 1;
-    top:0;
-    right: 0;
-    left:0;
-    bottom:0;
+  position: fixed;
+  z-index: 1;
+  top:0;
+  right: 0;
+  left:0;
+  bottom:0;
 }
 
 .popup button {
-    float: right;
+  float: right;
 }
