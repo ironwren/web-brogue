@@ -1,104 +1,105 @@
 // After logging in this view provides users with a list of options to begin play
 
 define([
-    "jquery",
-    "underscore",
-    "backbone",
-    "config",
-    "dispatcher",
-    "variantLookup",
-    "dataIO/send-generic",
-    "views/view-activation-helpers"
-], function ($, _, Backbone, config, dispatcher, variantLookup, send, activate) {
-    
-    var PlayView = Backbone.View.extend({
-        el: "#play",
-        headingTemplate: _.template($('#main-menu-template').html()),
-        
-        events: {
-            "click #play-brogue-list" : "playBrogueListClick",
-            "click #show-current-games" : "showCurrentGames",
-            "click #show-stats" : "showStats",
-            "click #show-high-scores" : "showHighScores",
-            "click #show-users-page" : "showUsersPage"
-        },
+  "jquery",
+  "underscore",
+  "backbone",
+  "config",
+  "dispatcher",
+  "variantLookup",
+  "dataIO/send-generic",
+  "views/view-activation-helpers",
+], function (
+  $,
+  _,
+  Backbone,
+  config,
+  dispatcher,
+  variantLookup,
+  send,
+  activate
+) {
+  var PlayView = Backbone.View.extend({
+    el: "#play",
+    headingTemplate: _.template($("#main-menu-template").html()),
 
-        loggedIn: false,
+    events: {
+      "click #play-brogue-list": "playBrogueListClick",
+      "click #show-current-games": "showCurrentGames",
+      "click #show-stats": "showStats",
+      "click #show-high-scores": "showHighScores",
+      "click #show-users-page": "showUsersPage",
+    },
 
-        initialize: function() {
-            this.render();
-        },
+    loggedIn: false,
 
-        render: function() {
+    initialize: function () {
+      this.render();
+    },
 
-            var variantData = _.values(variantLookup.variants);
+    render: function () {
+      var variantData = _.values(variantLookup.variants);
 
-            this.$el.html(this.headingTemplate(
-                { loggedIn: this.loggedIn,
-                  variants: variantData }));
+      this.$el.html(
+        this.headingTemplate({ loggedIn: this.loggedIn, variants: variantData })
+      );
 
-            return this;
-        },
+      return this;
+    },
 
-        playBrogueListClick: function(event) {
-            
-            event.preventDefault();
+    playBrogueListClick: function (event) {
+      event.preventDefault();
 
-            if(!event.target.id) {
-                return;
-            }
+      if (!event.target.id) {
+        return;
+      }
 
-            var codeAfterHyphenIndex = event.target.id.lastIndexOf("-")
-            
-            if(codeAfterHyphenIndex == -1) {
-                return;
-            }
+      var codeAfterHyphenIndex = event.target.id.lastIndexOf("-");
 
-            var code = event.target.id.substring(codeAfterHyphenIndex + 1);
+      if (codeAfterHyphenIndex == -1) {
+        return;
+      }
 
-            if(code in variantLookup.variants) {
+      var code = event.target.id.substring(codeAfterHyphenIndex + 1);
 
-                if(event.target.id.includes("seed")) {
-                    dispatcher.trigger("showSeedPopup", code);
-                }
-                else {    
-                    send("brogue", "start", {variant: code,
-                                             tournament: document.getElementById("tournament-mode-check").checked });
-                    dispatcher.trigger("startGame", { variant: code });
-                    this.goToConsole();
-                }
-            }
-        },
-        showCurrentGames : function(event){
-            event.preventDefault();
-            dispatcher.trigger("currentGames");
-        },
-        showStats : function(event){
-            event.preventDefault();
-            dispatcher.trigger("gameStatistics");
-        },
-        showHighScores: function(event) {
-            event.preventDefault();
-            dispatcher.trigger("all-scores");
-        },
-        showUsersPage: function(event) {
-            event.preventDefault();
-            dispatcher.trigger("users-page");
-        },
-        goToConsole : function(){
-            dispatcher.trigger("showConsole");
-        },
-        login: function() {
-            this.loggedIn = true;
-            this.render();
-        },
-        logout: function() {
-            this.loggedIn = false;
-            this.render();
+      if (code in variantLookup.variants) {
+        if (event.target.id.includes("seed")) {
+          dispatcher.trigger("showSeedPopup", code);
+        } else {
+          send("brogue", "start", { variant: code });
+          dispatcher.trigger("startGame", { variant: code });
+          this.goToConsole();
         }
-        
-    });
-    
-    return PlayView;
-    
+      }
+    },
+    showCurrentGames: function (event) {
+      event.preventDefault();
+      dispatcher.trigger("currentGames");
+    },
+    showStats: function (event) {
+      event.preventDefault();
+      dispatcher.trigger("gameStatistics");
+    },
+    showHighScores: function (event) {
+      event.preventDefault();
+      dispatcher.trigger("all-scores");
+    },
+    showUsersPage: function (event) {
+      event.preventDefault();
+      dispatcher.trigger("users-page");
+    },
+    goToConsole: function () {
+      dispatcher.trigger("showConsole");
+    },
+    login: function () {
+      this.loggedIn = true;
+      this.render();
+    },
+    logout: function () {
+      this.loggedIn = false;
+      this.render();
+    },
+  });
+
+  return PlayView;
 });
